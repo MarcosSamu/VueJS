@@ -1,0 +1,25 @@
+<script src="vue.js"></script>
+
+<div id="app">
+    <p v-once>{{ titulo }}</p>
+    <p>{{ saudacao() }}</p>
+    <a v-bind:href="link">Google_1</a>
+    <hr>
+    <p v-html="linkHTML"></p>
+</div>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+          titulo:'Usando VueJS!',
+          link:'https://google.com.br',
+          linkHTML:'<a href="https://google.com.br">Google_2</a>'
+        },
+        methods:{
+            saudacao:function(){
+                this.titulo = 'Boa noite'
+                return this.titulo
+            }
+        }
+    })
+</script>

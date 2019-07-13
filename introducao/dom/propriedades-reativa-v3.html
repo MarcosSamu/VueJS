@@ -1,0 +1,44 @@
+<script src="vue.js"></script>
+
+<div id="app">
+
+    <p>{{ maiorNum }} | {{ maiorNum_2 }}</p>
+
+    <p>{{ resultado }}</p>
+    <button v-on:click="maior">Aumentar</button>
+    <button v-on:click="maiorNum_2++">Aumentar 2</button>
+    <button v-on:click="menor">Diminuir</button>
+    
+
+</div>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            maiorNum:0,
+            maiorNum_2:0
+        },
+        computed:{
+            resultado:function(){
+                return this.maiorNum >= 5 ?
+                'Maior ou igual a 5':'Menor que 5'
+            }
+        },
+        watch:{
+            maiorNum(novo, antigo){
+                console.log(novo, antigo)
+                setTimeout(() => {
+                    this.maiorNum = 0
+                }, 2000)
+            }
+        },
+        methods:{
+            maior:function(){
+                this.maiorNum++
+            },
+           menor:function(){
+               this.maiorNum--
+           },
+        }
+    })
+</script>

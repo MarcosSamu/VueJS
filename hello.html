@@ -1,0 +1,22 @@
+<script src="vue.js"></script>
+
+<!--Template-->
+<div id="app">
+    <meta charset="utf-8"> 
+    <input type="text" v-on:input="mudaNome" placeholder="muda nome">
+    <h1>{{ titulo }}</h1>
+</div>
+
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            titulo:'Hello World',
+        },
+        methods:{
+            mudaNome:function(event){
+                this.titulo = event.target.value
+            }
+        }
+    })
+</script>

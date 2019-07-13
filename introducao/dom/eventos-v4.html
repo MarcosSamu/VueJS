@@ -1,0 +1,35 @@
+<script src="vue.js"></script>
+
+<div id="app">
+    <p>{{ contador }}</p>
+
+    <button v-on:click="soma(2, $event)">Somar 1</button>
+    <p v-on:mousemove="atualizarXY">Mouse: {{ x }} e {{ y }}
+        <span v-on:mousemove.stop="">Parar evento de mouse !!!</span>
+    </p>
+    <a v-on:click.prevent="" href="http://google.com">Google</a>
+</div>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+          contador:0,
+          x:0,
+          y:0
+        },
+        methods:{
+            soma:function(numPar, evento){
+                console.log(evento)
+                this.contador += numPar
+            },
+            atualizarXY:function(e){
+                console.log(e)
+                this.x = event.clientX
+                this.y = event.clientY
+            },
+            parar:function(e){
+                e.stopPropagation()
+            }
+        }
+    })
+</script>
